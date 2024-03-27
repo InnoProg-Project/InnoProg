@@ -3,6 +3,7 @@ package com.innoprog.android.uikit
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +24,7 @@ class InnoProgTopBarView @JvmOverloads constructor(
         typedArray.getDrawable(R.styleable.InnoProgTopBarView_topBar_left_icon)
 
     private val titleTV by lazy { findViewById<TextView>(R.id.title_tv) }
-    private val rightIconIV by lazy { findViewById<ImageView>(R.id.right_icon) }
+    val rightIconIV by lazy { findViewById<ImageView>(R.id.right_icon) }
     private val leftIconIV by lazy { findViewById<ImageView>(R.id.left_icon) }
 
     init {
@@ -43,6 +44,14 @@ class InnoProgTopBarView @JvmOverloads constructor(
 
     fun setRightIcon(drawable: Drawable) {
         rightIconIV.setImageDrawable(drawable)
+    }
+
+    fun setLeftIconVisibility() {
+        leftIconIV.visibility = View.INVISIBLE
+    }
+
+    fun setRightIconVisibility() {
+        rightIconIV.visibility = View.INVISIBLE
     }
 
     fun setLeftIconClickListener(click: () -> Unit) {
